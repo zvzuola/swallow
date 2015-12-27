@@ -52,7 +52,10 @@ var mode = 'default', //build模式
 // 代理
 gulp.task("serve", ["webpack", "mcss"], function() {
     browserSync.init({
-        proxy: "http://127.0.0.1:3001"
+        proxy: "http://127.0.0.1:3001",
+        ui: {
+            port: 3011
+        }
     });
     gulp.watch(['src/js/**'], ['webpack']);
     gulp.watch(['src/mcss/**'], ['mcss']);
