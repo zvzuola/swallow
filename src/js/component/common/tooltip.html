@@ -1,0 +1,13 @@
+<div class="u-tooltip u-tooltip-{placement} animated {@(animationName)} {@(class)}" r-hide={!show} r-style={{"left": left, "top": top, "right": right, "bottom": bottom}}>
+    <div class="inner">
+        <div class="arrow"></div>
+        <div class="content">
+            {#if contentTemplate}
+            {#include contentTemplate}
+            {#else}
+            <div class="title" r-hide={!title}>{title}</div>
+            <div class="tip">{tip}</div>
+            {/if}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="u-selectex" r-class={ {'z-dis': disabled} } ref="element" onselectstart="return false">
+    <div class="selectex_hd" on-click={this.toggle(!open)}>
+        <i class="f-icon f-icon-caret-down"></i>
+        <span title="{selected ? selected.name : placeholder}">{selected ? selected.name : placeholder}</span>
+    </div>
+    <div class="selectex_bd" r-hide={!open}>
+        <ul class="u-listbox">
+            {#if placeholder}<li r-class={ {'z-sel': selected === null} } on-click={this.select(null)}>{placeholder}</li>{/if}
+            {#list source as item}
+                <li r-class={ {'z-sel': selected === item} } on-click={this.select(item)}   title="{item.name}">{item.name}</li>
+            {/list}
+        </ul>
+    </div>
+</div>

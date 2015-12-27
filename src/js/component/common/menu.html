@@ -1,0 +1,27 @@
+<!-- 菜单模板 -->
+<div class="u-menu u-menu-wrap {@(class)}" z-crt={show} 
+r-class={ { "u-menu-btn": btn, "u-menu-split": split} }>
+    {#if !!source.menuName}
+		{#if btn && split}
+		<div class="u-btns u-btns-split">
+		    <a class="u-btn {btnType ||''}{source.cls || ' '}" href="{source.url || 'javascript:void(0)'}" on-click={this._click($event)}>
+		        {#if !!icon}
+		        <i class="f-icon f-icon-{icon}"></i>
+		        {/if}
+		        {source.menuName}
+		    </a>
+		    <button class="u-btn {btnType ||''}{source.cls || ' '}" on-click={this._splitClick($event)}>
+		    	<i class="f-icon f-icon-caret-down"></i>
+		    </button>
+		</div>
+		{#else}
+	    <a class="{source.cls || ' '}" href="{source.url || 'javascript:void(0)'}" on-click={this._click($event)}>
+	        {#if !!icon}
+	        <i class="f-icon f-icon-{icon}"></i>
+	        {/if}
+	        {source.menuName} <i class="f-icon f-icon-caret-down"></i>
+	    </a>
+		{/if}
+    {/if}
+    <menuInner root={this} source={source.children} />
+</div>

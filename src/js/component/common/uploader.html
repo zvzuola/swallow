@@ -1,0 +1,16 @@
+<div class="u-uploader {@(class)}" r-hide={!visible}>
+    <button id={@(btnId)} class="u-btn {@(btnClass)}" on-click={this._onSelectFileBtnClick()}>
+        {#if btnIcon}
+        <i class="f-icon f-icon-{btnIcon}"></i>
+        {/if}
+        {name}
+    </button>
+    <form method="POST" action={url} target="iframe{_id}" enctype={contentType} ref="form">
+        <input type="file" name="{fileParamName}" ref="file" on-change={this._onChange($event)}>
+        {#list Object.keys(data) as key}
+        <input type="hidden" name={key} value={data[key]}>
+        {/list}
+    </form>
+    <iframe name="iframe{_id}" on-load={this.cbUpload()} ref="iframe">
+    </iframe>
+</div>

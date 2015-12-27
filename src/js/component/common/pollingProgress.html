@@ -1,0 +1,13 @@
+<div class="m-importcase">
+    <div class="m-notify m-notify-warning m-notify-static">
+        <div class="notify_message f-cb">
+            <div class="notify_text">
+                <strong>注意:</strong>任务执行过程中请不要关闭窗口。</div>
+        </div>
+    </div>
+    <progress ref="importProgress" percent={Math.floor(importProgress.processed/importProgress.total*100 || 0)} striped={true}
+    active={true} />
+    <h3>正在导入
+        <span>{importProgress.processed}</span>/
+        <span>{importProgress.total}</span>({Math.floor(importProgress.processed/importProgress.total*100 || 0)}%)</h3>
+</div>

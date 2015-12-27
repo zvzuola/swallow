@@ -1,0 +1,18 @@
+<div ref="container" class="m-breadcrumb {@(class)}">
+    <div class="inner" ref="inner" r-style={{"right": right}}>
+        {#list paths.slice(0, -1) as path}
+        <div class="path" id="m_bc_path_{path.id}">
+            {#if pathNav}
+            <a href="javascript:void(0);" class="text" on-click={this._onPathClick(path)}>{path.name}</a>
+            {#else}
+            <span class="text">{path.name}</span>
+            {/if}
+            <div class="next" on-click={this._onPathSplitClick(path)}>{#if spliterIcon}<i class="f-icon f-icon-{spliterIcon}"></i>{#else}/{/if}</div>
+        </div>
+        {/list}
+        {#if paths[paths.length - 1]}
+        <div class="path z-crt" id="m_bc_path_{paths[paths.length - 1].id}">{paths[paths.length - 1].name}</div>
+        {/if}
+    </div>
+    <div class="stack" ref="stack" r-hide={!showStack}><button class="u-btn" on-click={this._onStackClick($event)}><i class="f-icon f-icon-angle-double-down"></i></button></div>
+</div>

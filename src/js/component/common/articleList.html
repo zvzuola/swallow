@@ -1,0 +1,9 @@
+<ul class="m-article-list">
+	{#list articleList as item}
+    <li>
+    	<h2 class="title"><a href="">{item.title}</a></h2>
+    	<p class="excerpt">{item.excerpt}</p>
+    	<div>{item.author}发布于{item.time}</div>
+    </li>
+    {/list}
+</ul>

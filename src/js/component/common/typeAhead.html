@@ -1,0 +1,31 @@
+<div class="u-dropdown u-typeahead {@(cls)}" r-class={ { 'z-dis': disabled} } ref="element">
+    <div class="dropdown_hd typeahead_hd" ref="hd" z-crt={open}>
+        <ul class="typeahead_list f-cb" on-click={this.$refs.input.focus()}>
+            {#list selections as item}
+            <li><span class="u-badge">{item[displayField]} <i class="f-icon f-icon-times close" on-click={this.removeItem(item)}></i></span></li>
+            {/list}
+            <li>
+                <input type="text" class="u-input" ref="input" r-class={ { "noinput": forceSelection} } r-attr-b={ {"disabled": disabled }} r-model={displayValue} on-keyup={this.input($event)}
+                on-focus={this.focus($event)} on-blur={this.blur($event)}>
+            </li>
+        </ul>
+    </div>
+    <div class="dropdown_bd" ref="bd" r-hide={!open} r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;" z-crt={open}>
+        <ul class="u-listbox">
+            {#if source.length} 
+                {#list source as item}
+                <li on-click={this.listItemClick(item)} r-class={ {"z-sel": selected === item} } title="{item[displayField]}">
+                    {#if itemTemplate} 
+                    {#include itemTemplate} 
+                    {#else}
+                    {item[displayField]}
+                    {/if}
+                </li>
+                {/list} 
+            {#else}
+            <li>{emptyText}</li>
+            {/if}
+        </ul>
+        <loading visible={pending} size="xsmall"/>
+    </div>
+</div>

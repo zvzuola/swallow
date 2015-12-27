@@ -1,0 +1,14 @@
+<div class="u-dropdown u-dropdown-suggest  {@(class)}" r-class={ {'z-dis': disabled} } ref="element">
+    <div class="dropdown_hd">
+        <input class="u-input u-input-full" placeholder={placeholder} r-model={value} on-focus={this.focus()} on-keyup={this.input($event)} on-blur={this.uninput($event)} ref="input" disabled={disabled} title="{value}">
+    </div>
+    <div class="dropdown_bd" r-hide={!open} r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        <ul class="u-listbox">
+        {#list source as item}
+            {#if !enableFilter || this.filter(item)}
+                <li  class="f-toe" title="{item.name}" on-click={this.select(item)} r-class={ {"z-sel": item === selected} }>{item.name}</li>
+            {/if}
+        {/list}
+        </ul>
+    </div>
+</div>

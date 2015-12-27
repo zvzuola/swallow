@@ -1,0 +1,48 @@
+<div class="u-dropdown u-combobox {@(class)}" r-class={ {'z-dis': disabled, 'z-bdup': bodyDirection==="up", "z-editable": editable, "u-combobox-group": groupable} } ref="element">
+    <div class="dropdown_hd" ref="hd" z-crt={open}>
+        <input type="text" class="u-input" placeholder="{placeholder}" ref="input" r-class={ {"noinput": forceSelection} } r-attr-b={ {"disabled": disabled} } title="{displayValue}" r-model={displayValue} on-keyup={this.input($event)} on-focus={this.focus($event)} on-blur={this.blur($event)}>
+        {#if enableTrigger}
+        <button class="u-btn u-btn-caret" on-click={this.focus($event)} r-attr-b={ {"disabled": disabled} }><i class="f-icon f-icon-caret-down"></i></button>
+        {/if}
+    </div>
+    <div class="dropdown_bd" ref="bd" r-hide={!open} r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;" z-crt={open}>
+        <ul class="u-listbox f-toe">
+            {#if groupable}
+                {#if groupSource.length}
+                {#list groupSource as group}
+                    <li>
+                        <div class='groupname'>{group.name}</div>
+                        <ul class="u-listbox f-toe">
+                            {#list group.items as item}
+                                <li on-click={this.listItemClick(item)} r-class={ {"z-sel": selected === item} }  title="{item[displayField]}">
+                                    {#if itemTemplate}
+                                    {#include itemTemplate}
+                                    {#else}
+                                    {item[displayField]}
+                                    {/if}
+                                </li>
+                            {/list}
+                        </ul>
+                    </li>
+                {/list}
+                {#else}
+                <li>{emptyText}</li>
+                {/if}
+            {#else}
+                {#if source.length}
+                {#list source as item}
+                    <li on-click={this.listItemClick(item)} r-class={ {"z-sel": selected === item} } title="{item[displayField]}">
+                        {#if itemTemplate}
+                        {#include itemTemplate}
+                        {#else}
+                        {item[displayField]}
+                        {/if}
+                    </li>
+                {/list}
+                {#else}
+                <li>{emptyText}</li>
+                {/if}
+            {/if}
+        </ul>
+    </div>
+</div>

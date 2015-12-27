@@ -1,0 +1,15 @@
+<div>
+	<div>
+		<checkEx checked={item.checked} on-check={this._onNodeCheck(item, $event)} />
+		<i class="f-icon {item.childrenCount > 0 ? (item.open ? 'f-icon-folder-open' : 'f-icon-folder') : 'f-icon-file-text'}"></i>
+		{item.name} <span r-hide={item.childrenCount === 0 || !item.childrenCount}>({item.childrenCount||0})</span>
+		{#list item.states as state}
+			<span class="{state.cls}">
+			{state.name}
+			{#if !!state.icon}
+			<i class="f-icon f-icon-{state.icon}" r-hide={!!state.icon}></i>
+			{/if}
+			</span>
+		{/list}
+	</div>
+</div>

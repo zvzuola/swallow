@@ -1,0 +1,18 @@
+<div class="m-imageviewer" r-hide={!show} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">
+    <div class="u-mask" on-click={this._onMaskClick($event)}></div>
+    <div class="image-wrapper">
+        <img ref="image" class="image" src="{current.src}" alt="{current.name}" style="transform: scale({zoom}); transform-origin: {px}px {py}px 0; left: {x}px; top: {y}px;" r-hide={!imageShow} r-animation="on: enter; class: animated fadeIn;" on-load={this._onImageLoaded($event)} on-mousewheel={this._onImageWheel($event)} on-DOMMouseScroll={this._onImageWheel($event)} on-mousedown={this._onImageMouseDown($event)} on-dblclick={this.zoom(0)}>
+    </div>
+    <div class="exif">{current.name} ({current.width} &times; {current.height}) {current.size} KB</div>
+    <div class="galary">
+        <div class="thumbnail-wrap" r-style={{"margin-left": galaryLeft + "px", "width": images.length * 40 + "px"}}>
+            {#list images as image}
+            <div class="thumbnail" on-click={this.select(image)}>
+                <img src="{image.thumbnail}" alt="{image.name}" style="{image.width > image.height ? 'height: 100%;' : 'width: 100%'}">
+            </div>
+            {/list}
+        </div>
+    </div>
+    <div class="close" on-click={this._onCloseButtonClick($event)}><i class="f-icon f-icon-times"></i></div>
+    <div class="scale-info g-center" r-hide={!scaleInfoShow} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">{Math.floor(zoom*100)}%</div>
+</div>

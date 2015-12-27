@@ -1,0 +1,23 @@
+<div class="m-filemanager">
+    <div class="inner">
+        {#list files as file}
+        <div class="m-fileui" r-hide={file._deleted}>
+            <div class="preview" style="background-image: url({file._data || file.thumbnail}); width: {itemWidth}px; height: {itemHeight}px;" on-click={this.selectFile(file)}>
+                <div class="new" r-hide={!file._created}>NEW</div>
+            </div>
+            {#if enableDelete}
+            <div class="close" on-click={this.removeFile(file)} title="移除文件"><i class="f-icon f-icon-times"></i></div>
+            {/if}
+            <div class="actions">
+                <button class="u-btn u-btn-sm reset" r-hide={!file._replaced || file._created} on-click={this.resetFile(file)}><i class="f-icon f-icon-undo"></i> 重置</button>
+            </div>
+        </div>
+        {/list}
+        {#if this.enableCreate()}
+        <div class="m-fileui">
+            <div class="add" style="width: {itemWidth}px; height: {itemHeight}px;" on-click={this.selectFile()}><i class="f-icon f-icon-plus-circle"></i></div>
+        </div>
+        {/if}
+    </div>
+    <input ref="fileInput" class="f-dn" type="file" accept="image/*" maxlength="1" on-change={this._onFileSelected($event)}>
+</div>

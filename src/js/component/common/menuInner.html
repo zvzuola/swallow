@@ -1,0 +1,27 @@
+<!-- 菜单内部 -->
+<ul ref="menuEl" class="menu" on-mouseup={$event.stop()}>
+    {#list source as menu}
+	    {#if !!menu.gutter}
+	    <li class="gutter" r-hide={menu.hide}></li>
+	    {#else}
+	    <li r-class={{"u-menu": !!menu.children}} r-hide={menu.hide}>
+            {#if menu.itemTemplate}
+            {#include menu.itemTemplate}
+            {#else}
+            
+                <a href="{menu.url || 'javascript:void(0)'}" target="{menu.target || '_self'}" r-class={{"z-disabled": menu.disabled}} data-id="{@(menu._id)}" data-action="{@(menu.action)}" disabled="{menu.disabled}" on-click={this.root.action($event, menu)} title="{this.root.data.showTip ? menu.menuName : ''}">
+                {#if menu.icon}
+                <i class="preicon f-icon f-icon-{menu.icon}"></i>
+                {/if}
+                {menu.menuName}
+                {#if !!menu.children} <i class="careticon f-icon f-icon-caret-right f-fr"></i> {/if}
+                </a>            
+                {#if !!menu.children}
+                    <menuInner source={menu.children} root={root} show=false />
+                {/if}
+            
+            {/if}
+	    </li>
+	    {/if}
+    {/list}
+</ul>

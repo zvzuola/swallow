@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+  </head>
+  <body>
+    <div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span8">
+				<form>
+					<fieldset>
+						<legend><%=label%></legend>
+						<textarea id="c_editor" name="c_editor" class="span12" rows="10"></textarea>
+						<button id="c_save" type="button" class="btn btn-primary">保存</button>
+					</fieldset>
+				<form>
+			</div>
+		</div>
+	</div>
+  </body>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script src="/javascripts/jquery.json-2.4.js"></script>
+  <script type="text/javascript" src='/javascripts/bundle.js'></script>
+  <script src="/javascripts/movie.js"></script>
+</html>

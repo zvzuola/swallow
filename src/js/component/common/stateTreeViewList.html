@@ -1,0 +1,25 @@
+<ul class="treeview_list" r-class={ {'z-dis': disabled} } r-hide={!visible}>
+    {#list source as item}
+    <li r-hide={item.filtered===false}>
+        <div class="treeview_item  u-treeitem" id="treeViewItem{item.id}">
+            {#if item.childrenCount || (item.children && item.children.length)}
+            {#if item._pending}
+            <i class="u-loading u-loading-s1 u-loading-xs"></i>
+            {#else}
+            <i class="f-icon f-icon-caret-right" r-class={ {'z-active': item.open}} on-click={this.toggle(item)}></i>
+            {/if}
+            {/if}
+            <div class="treeview_itemname" r-class={ {'z-sel': this.treeroot.isSelected(item), "animated flash": item === this.treeroot.data.locatedNode} } r-scroll={item === this.treeroot.data.locatedNode} on-click={this.treeroot._onTreeItemClick(item, $event)} on-dblclick={this.toggle(item)}>
+                {#if itemTemplate}
+                {#include itemTemplate}
+                {#else}
+                {item.name}
+                {/if}
+            </div>
+        </div>
+        {#if item.childrenCount || (item.children && item.children.length)}
+        <stateTreeViewList source={item.children} visible={item.open} />
+        {/if}
+    </li>
+    {/list}
+</ul>

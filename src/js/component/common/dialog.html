@@ -1,0 +1,31 @@
+<div id="{id}" class="m-modal {@(class)}" r-hide={!show} r-animation="on: enter; class: animated fadeIn;">
+    <div class="m-panel m-panel-dialog g-center" r-style={ { width: (width || 360) + 'px', height: (height || 'auto') + 'px' } }>
+        <div class="hd">
+            <div class="tools">
+            {#if closable}
+                <a class="modal_close" href="javascript:void(0);" class="u-btn u-btn-icon"  on-click={closeAction === 'close' ? this.close(): this.hide()}><i class="f-icon f-icon-times"></i></a>
+            {/if}
+            </div>
+            <strong class="modal_title">{title}</strong>
+        </div>
+        <div class="bd">
+            {#if contentTemplate}
+            {#include contentTemplate}
+            {#else}
+            <div class="modal_ct" r-html={content}></div>
+            {/if}
+        </div>
+        {#if buttons && buttons.length}
+        <div class="ft f-tac">
+            {#list buttons as btn}
+            <button class="u-btn {btn.cls}" r-attr-b={{"disabled": !!btn.enable}} r-hide={btn.hide} on-click={this.buttonHandler(btn, $event)}>
+            {#if btn.icon}
+            <i class="f-icon f-icon-{btn.icon}"></i>
+            {/if}
+            {btn.text}
+            </button>
+            {/list}
+        </div>
+        {/if}
+    </div>
+</div>
