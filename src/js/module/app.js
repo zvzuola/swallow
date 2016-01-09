@@ -18,11 +18,11 @@ var App = Component.extend({
 		})
 	},
 	init: function(){
-    	this.supr() // call the super init
-  	},
-  	enter: function(){
-  		
-  	}
+  	this.supr() // call the super init
+	},
+	enter: function(){
+		
+	}
 });
 
 module.exports = App;

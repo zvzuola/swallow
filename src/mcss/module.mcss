@@ -1,5 +1,5 @@
 .m-nav{
-	$clearfix();
+	$clearfix();margin: 0;padding: 0;
 	.nav{float: right;
 		li{float: left;
 			a{display: block;padding: 20px;color: #fff;font-size: $fs4;}
@@ -7,7 +7,13 @@
 	}
 }
 
-.m-article-list{
+.m-container{
+	padding: 0 15px;
+	margin: 0 auto;
+	max-width: 1170px;
+}
+
+.m-article-list{padding: 0; margin: 0;
 	li{padding: 12px 0px;border-bottom: 1px solid #EEE;}
 	.title{display: inline; margin: 0px 5px 0px 0px; font-size: $fs4;}
 	.excerpt{margin: 5px 0px 0px; color: #777; font-size: $fs1; line-height: 1.6; overflow: hidden;}

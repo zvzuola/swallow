@@ -5,10 +5,10 @@ var MovieSchema = new Schema({
 	alias : [String],
 	publish : Date,
 	create_date : { type: Date, default: Date.now},
-		images :{
-			coverSmall:String,
-			coverBig:String,
-		},
+	images :{
+		coverSmall:String,
+		coverBig:String,
+	},
 	source :[{
 		source:String,
 		link:String,

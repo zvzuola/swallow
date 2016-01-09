@@ -1,5 +1,4 @@
 @import "http://nec.netease.com/download/framework/mass/mass/index.mcss";
-$reset-normalize();
 
 @abstract '_config.mcss';
 @import "base.mcss";
