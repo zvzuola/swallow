@@ -2,6 +2,9 @@ var mongodb = require('./mongodb');
 var Schema = mongodb.mongoose.Schema;
 var ArticleSchema = new Schema({
 	title : String,
+	excerpt: String,
+	author: String,
+	time: Date,
 	content: String
 });
 var Article = mongodb.mongoose.model("Article", ArticleSchema);

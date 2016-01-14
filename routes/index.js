@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/ajax/articles',function(req, res) {
+router.post('/post/get_articles',function(req, res) {
 	Article.find(function(err, obj){
 		console.log(obj);
 		res.json({
@@ -18,9 +18,11 @@ router.post('/ajax/articles',function(req, res) {
 	
 });
 
-router.post('/post/write',function(req, res) {
+router.post('/post/new_article',function(req, res) {
 	console.log(req.body.content,req.body);
-	Article.save(req.body,function(err){
+	var newArticle = req.body;
+	newArticle.time = new Date();
+	Article.save(newArticle,function(err){
 		if(err) {
 			res.send({'success':false,'err':err});
 		}

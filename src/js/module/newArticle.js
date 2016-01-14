@@ -1,7 +1,7 @@
 'use strict';
 
 var Component = require('../component/base/component.js');
-var template = require('./write.html');
+var template = require('./newArticle.html');
 var _ = require('../component/base/util.js');
 // var serviceHome = require('../service/write.js');
 
